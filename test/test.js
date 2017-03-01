@@ -1,5 +1,6 @@
 var assert = require('assert');
 var convertToRoman = require('./../convert').convertToRoman;
+var convertToNumber = require('./../convert').convertToNumber;
 
 describe('convert single digit to roman number', () => {
   it('1 should return I', () => {
@@ -106,5 +107,75 @@ describe('convert invalid number to roman number', () => {
   });
   it('roman number should return empty', () => {
     assert.equal('', convertToRoman('MCMXCVII'));
+  });
+});
+
+describe('convert roman numeral to number', () => {
+  it('I should return 1', () => {
+    assert.equal(1, convertToNumber('I'));
+  });
+  it('V should return 5', () => {
+    assert.equal(5, convertToNumber('V'));
+  });
+  it('X should return 10', () => {
+    assert.equal(10, convertToNumber('X'));
+  });
+  it('L should return 50', () => {
+    assert.equal(50, convertToNumber('L'));
+  });
+  it('C should return 100', () => {
+    assert.equal(100, convertToNumber('C'));
+  });
+  it('D should return 500', () => {
+    assert.equal(500, convertToNumber('D'));
+  });
+  it('M should return 1000', () => {
+    assert.equal(1000, convertToNumber('M'));
+  });
+  it('empty should return empty', () => {
+    assert.equal('', convertToNumber(''));
+  });
+  it('invalid letter should return "invalid input" error', () => {
+    assert.equal('invalid input', convertToNumber('A'));
+  });
+ 
+});
+
+describe('convert roman letter to single digit', () => {
+  it('II should return 2', () => {
+    assert.equal(2, convertToNumber('II'));
+  });
+  it('III should return 3', () => {
+    assert.equal(3, convertToNumber('III'));
+  });
+  it('IV should return 4', () => {
+    assert.equal(4, convertToNumber('IV'));
+  });
+  it('IIII should return 4', () => {
+    assert.equal(4, convertToNumber('IIII'));
+  });
+  it('VI should return 6', () => {
+    assert.equal(6, convertToNumber('VI'));
+  });
+  it('VII should return 7', () => {
+    assert.equal(7, convertToNumber('VII'));
+  });
+  it('VIII should return 8', () => {
+    assert.equal(8, convertToNumber('VIII'));
+  });
+  it('IX should return 9', () => {
+    assert.equal(9, convertToNumber('IX'));
+  }); 
+  it('VIIII should return 9', () => {
+    assert.equal(9, convertToNumber('VIIII'));
+  }); 
+});
+
+describe('convert roman numeral to number', () => {
+  it('XLIV should return 44', () => {
+    assert.equal(44, convertToNumber('XLIV'));
+  });
+  it('MMMCMXCIX should return 3999', () => {
+    assert.equal(3999, convertToNumber('MMMCMXCIX'));
   });
 });

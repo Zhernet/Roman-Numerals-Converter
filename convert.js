@@ -1,5 +1,7 @@
 "use strict";
 
+const INVALID_INPUT = 'invalid input';
+
 function convertToRoman(number) {
   function convertDigitToRoman(number, inc, middle, biggest) {
     switch(number) {
@@ -26,4 +28,50 @@ function convertToRoman(number) {
     }
 }
 
+function convertToNumber(roman) {
+  function convertLetterToNumber(letter) {
+    if (letter === 'I') {
+      return 1;
+    } else if (letter === 'V') {
+      return 5;
+    } else if (letter === 'X') {
+      return 10;
+    } else if (letter === 'L') {
+      return 50;
+    } else if (letter === 'C') {
+      return 100;
+    } else if (letter === 'D') {
+      return 500;
+    } else if (letter === 'M') {
+      return 1000;
+    } else if (letter === '') {
+      return '';
+    } else {
+      throw INVALID_INPUT;//"invalid input";
+    }
+
+  };
+
+  let letters = roman.toUpperCase();
+  try {
+    let result = 0;
+    let last = 0;
+    for (let i = letters.length - 1; i >= 0; i--) {
+      let current = convertLetterToNumber(letters[i]);
+      if (current < last) {
+        result -= current;
+      } else {
+        result += current;
+      last = current;
+      }      
+    }
+    return result;
+  } catch(err) {
+    console.log(err);
+    return err;
+  }
+  
+}
+
 module.exports.convertToRoman = convertToRoman;
+module.exports.convertToNumber = convertToNumber;
