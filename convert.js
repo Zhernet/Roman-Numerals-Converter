@@ -1,8 +1,22 @@
 "use strict";
 
+const EMPTY = '';
 const INVALID_INPUT = 'invalid input';
 
+function isBlankInput(input) {
+  if (input === undefined) {
+    return true;
+  }
+  let regex = new RegExp("^\\s*$");
+  return regex.test(input);
+}
+
 function convertToRoman(number) {
+  function isInvalidInput(number) {
+    let regex = new RegExp("^[0-9]*$");
+    return !(regex.test(number) && (number > 0) && (number < 4000));
+  };
+
   function convertDigitToRoman(number, inc, middle, biggest) {
     switch(number) {
       case 1 : return inc;
@@ -17,18 +31,26 @@ function convertToRoman(number) {
     }
     return '';
   }
-
-  if (number > 0 && number < 4000) { 
+  
+  if (isBlankInput(number)) {
+    return EMPTY;
+  } else if (isInvalidInput(number)) {
+    return INVALID_INPUT;
+  } else {
     return convertDigitToRoman(Math.floor(number/1000) % 10, 'M', '', '')
       + convertDigitToRoman(Math.floor(number/100) % 10, 'C', 'D', 'M')
       + convertDigitToRoman(Math.floor(number/10) % 10, 'X', 'L', 'C')
       + convertDigitToRoman(number % 10 , 'I', 'V', 'X');
-    } else {
-      return '';
-    }
+  }
 }
+      
 
 function convertToNumber(roman) {
+  function isInvalidInput(roman) {
+    let regex = new RegExp("^[IVXLCDM]+$");
+    return !regex.test(roman);
+  };
+
   function convertLetterToNumber(letter) {
     if (letter === 'I') {
       return 1;
@@ -44,16 +66,19 @@ function convertToNumber(roman) {
       return 500;
     } else if (letter === 'M') {
       return 1000;
-    } else if (letter === '') {
-      return '';
     } else {
-      throw INVALID_INPUT;//"invalid input";
-    }
-
-  };
-
+      return EMPTY;
+    };
+  };  
+  if (isBlankInput(roman)) {
+      return EMPTY;
+  }
   let letters = roman.toUpperCase();
-  try {
+  if (isInvalidInput(letters)) {
+    return INVALID_INPUT;
+  }
+
+  try {    
     let result = 0;
     let last = 0;
     for (let i = letters.length - 1; i >= 0; i--) {
@@ -69,8 +94,7 @@ function convertToNumber(roman) {
   } catch(err) {
     console.log(err);
     return err;
-  }
-  
+  }  
 }
 
 module.exports.convertToRoman = convertToRoman;
