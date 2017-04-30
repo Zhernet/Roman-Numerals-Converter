@@ -1,19 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const convertToRoman = require('./../convert').convertToRoman
-const convertToNumber = require('./../convert').convertToNumber
+const convert = require('./../convert').convert
 
 router.post('/', function (req, res) {
-  let method = req.body.method
-  let result
-  if (method === 'toRoman') {
-    result = convertToRoman(req.body.input)
-  } else if (method === 'toNumber') {
-    result = convertToNumber(req.body.input)
-  } else {
-    result = 'invalid'  
-  }  
+  let result = convert(req.body.input)
   return res.json(result)
-});
+})
 
 module.exports = router

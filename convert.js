@@ -43,14 +43,13 @@ function convertToRoman(number) {
       + convertDigitToRoman(number % 10 , 'I', 'V', 'X');
   }
 }
-      
+
+function isRomanNumber(input) {
+  let regex = new RegExp("^[IVXLCDM]+$", "i");
+  return regex.test(input);
+};      
 
 function convertToNumber(roman) {
-  function isInvalidInput(roman) {
-    let regex = new RegExp("^[IVXLCDM]+$");
-    return !regex.test(roman);
-  };
-
   function convertLetterToNumber(letter) {
     if (letter === 'I') {
       return 1;
@@ -68,17 +67,19 @@ function convertToNumber(roman) {
       return 1000;
     } else {
       return EMPTY;
-    };
+    }
   };  
+
   if (isBlankInput(roman)) {
       return EMPTY;
   }
-  let letters = roman.toUpperCase();
-  if (isInvalidInput(letters)) {
+  
+  if (!isRomanNumber(roman)) {
     return INVALID_INPUT;
   }
 
   try {    
+    let letters = roman.toUpperCase();
     let result = 0;
     let last = 0;
     for (let i = letters.length - 1; i >= 0; i--) {
@@ -97,5 +98,14 @@ function convertToNumber(roman) {
   }  
 }
 
+function convert(input) {
+  if (isRomanNumber(input)) {
+    return convertToNumber(input);
+  } else {
+    return convertToRoman(input);
+  }
+}
+
 module.exports.convertToRoman = convertToRoman;
 module.exports.convertToNumber = convertToNumber;
+module.exports.convert = convert;
