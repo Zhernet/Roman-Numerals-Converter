@@ -8,10 +8,10 @@ $(document).ready(function() {
 			type: 'POST', 
 			url: 'http://localhost:3000/',
 			data : {method: 'toRoman', input: input},	  
-				success: function (response, status) {
-			alert(response);
+			success: function (response, status) {
+				$("#result-arabic").val(response);
 			}, error: function () {
-			alert('Failed to connect to the server.');
+				$("#result-arabic").val('Failed to connect to the server.');
 			}
 		});
   });  
@@ -24,10 +24,10 @@ $(document).ready(function() {
 			type: 'POST', 
 			url: 'http://localhost:3000/',
 			data : {method: 'toNumber', input: input},	  
-				success: function (response, status) {
-			alert(response);
+			success: function (response, status) {
+				$("#result-roman").val(response);
 			}, error: function () {
-			alert('Failed to connect to the server.');
+				$("#result-roman").val('Failed to connect to the server.');
 			}
 		});
   });  

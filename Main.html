@@ -10,14 +10,25 @@
     <h1>Roman Numerals Converter</h1>
     <div class="form-row">
       <fieldset>
-        <legend>Convert between Arabic and Roman Numbers</legend>
+        <legend>Convert from Arabic Number to Roman Number</legend>
         <label for="input-arabic">Arabic Number</label>
-        <input type="text" id ="input-arabic">
+        <input type="text" id ="input-arabic" required placeholder="2017">
+        <br>
         <button id="convertToRoman">Convert</button>
+        <br>
+        <input type="text" id ="result-arabic" disabled="disabled">
+        </fieldset>
+
         <br><br>
+
+        <fieldset>
+        <legend>Convert from Roman Number to Arabic Number</legend>
         <label for="input-roman">Roman Number</label>
-        <input type="text" id ="input-roman">
+        <input type="text" id ="input-roman" required placeholder="MMXVII">
+        <br>
         <button id="convertToArabic">Convert</button>
+        <br>
+        <input type="text" id ="result-roman" disabled="disabled">
         </fieldset>
     </div>
   </body>
