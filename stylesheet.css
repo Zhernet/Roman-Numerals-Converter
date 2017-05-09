@@ -1,0 +1,30 @@
+fieldset {
+  border:1px solid cadetblue;
+  font-family: verdana;
+  max-width:500px;
+  }
+legend {
+  padding: 0.2em 1em;
+  border: 1px solid CadetBlue ;
+  color :CadetBlue ;
+  font-size: 80%; 
+  text-align:right;
+  }
+label {
+  float: left;
+  width: 10%;
+  margin: 5px 1em;
+  text-align: left;  
+  }
+input {  
+  margin: 4px 1px;
+}
+input[type=button] {  
+  background-color: cadetblue;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 1px;
+  cursor: pointer;
+}

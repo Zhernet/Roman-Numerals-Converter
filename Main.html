@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Roman Numerals Converter</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-      <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body>
-    <h1>Roman Numerals Converter</h1>
-    <div class="form-row">
+    <div>
       <fieldset>
         <legend>Convert betwen Arabic and Roman Numbers</legend>
         <label for="input">Input:</label>
         <input type="text" id ="input" required placeholder="2017 or MMXVII">
+        <br>        
+        <input type="button" id="convert" value="Convert">
         <br>
-        <button id="convert">Convert</button>
-        <br>
+        <label for ="result">Result:</label>
         <input type="text" id ="result" disabled="disabled">
-        </fieldset>
+      </fieldset>
     </div>
   </body>
 </html>
