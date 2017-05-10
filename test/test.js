@@ -1,6 +1,6 @@
 var assert = require('assert');
-var convertToRoman = require('./../convert').convertToRoman;
-var convertToNumber = require('./../convert').convertToNumber;
+var convertToRoman = require('./../server/convert').convertToRoman;
+var convertToNumber = require('./../server/convert').convertToNumber;
 
 describe('convert to roman numeral', function() {
   describe('convert single digit to roman numeral', function() {
